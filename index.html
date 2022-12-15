@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vessel ETA to Port</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Vessel ETA to Port</h1>
+    <form>
+      Port ID: <input type="text" id="portid"><br>
+      Port UN LOCODE: <input type="text" id="unlocode"><br>
+      Ship ID: <input type="text" id="shipid"><br>
+      Ship MMSI: <input type="text" id="mmsi"><br>
+      Ship IMO: <input type="text" id="imo"><br>
+      <input type="button" value="Get ETA" onclick="getETA()">
+    </form>
+    <div id="eta"></div>
+    <script src="script.js"></script>
+    </body>
+</html>
