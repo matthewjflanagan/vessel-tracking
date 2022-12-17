@@ -1,5 +1,5 @@
 const API_KEY = "97d407d1e6b3783801fa995ab4d87df18746c1fd";
-const API_URL = "https://www.marinetraffic.com/en/ais/details/ports/portid:port_id/unlocode:unlocode/mmsi:mmsi/imo:imo/eta:yyyymmddhhmm";
+const API_URL = "https://www.marinetraffic.com/en/ais/details/ports/portid:port_id/unlocode:unlocode/imo:imo/eta:yyyymmddhhmm";
 
 function getETA() {
   // Validate form fields
@@ -9,11 +9,10 @@ function getETA() {
 
   // Get user-specified values from form fields
   const unlocode = document.getElementById("unlocode").value;
-  const mmsi = document.getElementById("mmsi").value;
   const imo = document.getElementById("imo").value;
 
   // Replace placeholders in API URL with user-specified values
-  let url = API_URL.replace("unlocode", unlocode).replace("mmsi", mmsi).replace("imo", imo);
+  let url = API_URL.replace("unlocode", unlocode).replace("imo", imo);
 
   try {
     // Make API request
@@ -70,11 +69,10 @@ function getETA() {
 function validateForm() {
   // Get form field values
   const unlocode = document.getElementById("unlocode").value;
-  const mmsi = document.getElementById("mmsi").value;
   const imo = document.getElementById("imo").value;
 
   // Validate form fields
-  if (!unlocode || !mmsi || !imo) {
+  if (!unlocode || !imo) {
     alert("Please enter all required fields.");
     return false;
   }
