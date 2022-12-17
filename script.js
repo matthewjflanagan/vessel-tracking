@@ -8,15 +8,12 @@ function getETA() {
   }
 
   // Get user-specified values from form fields
-  const portid = document.getElementById("portid").value;
   const unlocode = document.getElementById("unlocode").value;
-  const shipid = document.getElementById("shipid").value;
   const mmsi = document.getElementById("mmsi").value;
   const imo = document.getElementById("imo").value;
 
   // Replace placeholders in API URL with user-specified values
-  let url = API_URL.replace("port_id", portid).replace("unlocode", unlocode);
-  url = url.replace("mmsi", mmsi).replace("imo", imo);
+  let url = API_URL.replace("unlocode", unlocode).replace("mmsi", mmsi).replace("imo", imo);
 
   try {
     // Make API request
@@ -69,16 +66,15 @@ function getETA() {
   }
 }
 
+
 function validateForm() {
   // Get form field values
-  const portid = document.getElementById("portid").value;
   const unlocode = document.getElementById("unlocode").value;
-  const shipid = document.getElementById("shipid").value;
   const mmsi = document.getElementById("mmsi").value;
   const imo = document.getElementById("imo").value;
 
   // Validate form fields
-  if (!portid || !unlocode || !shipid || !mmsi || !imo) {
+  if (!unlocode || !mmsi || !imo) {
     alert("Please enter all required fields.");
     return false;
   }
