@@ -1,6 +1,3 @@
-const API_KEY = "97d407d1e6b3783801fa995ab4d87df18746c1fd";
-const API_URL = "https://www.marinetraffic.com/en/ais/details/ports/unlocode:unlocode/imo:imo/eta:yyyymmddhhmm";
-
 function getETA() {
   // Validate form fields
   if (!validateForm()) {
@@ -8,21 +5,21 @@ function getETA() {
   }
 
   // Get user-specified values from form fields
-  const unlocode = document.getElementById("unlocode").value;
-  const imo = document.getElementById("imo").value;
+  const portid = document.getElementById("portid").value;
+  const mmsi = document.getElementById("mmsi").value;
 
-  // Replace placeholders in API URL with user-specified values
-  let url = API_URL.replace("unlocode", unlocode).replace("imo", imo);
+  const API_KEY = "97d407d1e6b3783801fa995ab4d87df18746c1fd";
+  const API_URL = `https://services.marinetraffic.com/api/etatoport/${API_KEY}?v=1&portid=${portid}&mmsi=${mmsi}&msgtype=simple&protocol=xml}`;
 
   try {
     // Make API request
-    fetch(url, {
+    fetch(API_URL, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${API_KEY}`
       }
     })
-    .then(async response => {
+    .then(response => {
       // If the server returns a successful response, parse the response as JSON
       if (response.ok) {
         return response.json();
@@ -30,14 +27,13 @@ function getETA() {
       // If the server returns a "No 'Access-Control-Allow-Origin' header is present" error,
       // try making the request in "no-cors" mode to bypass the CORS error
       else if (response.status === 0) {
-        const response_1 = await fetch(url, {
+        return fetch(url, {
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${API_KEY}`
           },
           mode: "no-cors"
-        });
-        return await response_1.json();
+        }).then(response => response.json());
       }
       // If the server returns any other error, throw an error
       else {
@@ -66,14 +62,13 @@ function getETA() {
   }
 }
 
-
 function validateForm() {
   // Get form field values
-  const unlocode = document.getElementById("unlocode").value;
-  const imo = document.getElementById("imo").value;
+  const portid = document.getElementById("portid").value;
+  const mmsi = document.getElementById("mmsi").value;
 
   // Validate form fields
-  if (!unlocode || !imo) {
+  if (!portid || !mmsi) {
     alert("Please enter all required fields.");
     return false;
   }
