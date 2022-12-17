@@ -9,7 +9,7 @@ function getETA() {
   const mmsi = document.getElementById("mmsi").value;
 
   const API_KEY = "97d407d1e6b3783801fa995ab4d87df18746c1fd";
-  const API_URL = `https://services.marinetraffic.com/api/etatoport/${API_KEY}?v=1&portid=${portid}&mmsi=${mmsi}&msgtype=simple&protocol=xml}`;
+  const API_URL = `https://services.marinetraffic.com/api/etatoport/${API_KEY}?v=1&portid=${portid}&mmsi=${mmsi}&msgtype=simple&protocol=json&mode=fast&lang=en}`;
 
   try {
     // Make API request
