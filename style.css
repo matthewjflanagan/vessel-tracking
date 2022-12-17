@@ -49,9 +49,20 @@ button[type="button"]:hover {
   background-color: #45a049;
 }
 
+/* CSS */
+form label {
+  display: inline-block;
+  width: 80px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+form input[type="text"] {
+  width: 200px;
+}
+
 #eta {
-  margin: 20px;
-  padding: 20px;
-  background-color: #eee;
-  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
 }
