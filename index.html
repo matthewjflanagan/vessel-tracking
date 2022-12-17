@@ -7,14 +7,21 @@
   <body>
     <h1>Vessel ETA to Port</h1>
     <form>
-      Port ID: <input type="text" id="portid"><br>
-      Port UN LOCODE: <input type="text" id="unlocode"><br>
-      Ship ID: <input type="text" id="shipid"><br>
-      Ship MMSI: <input type="text" id="mmsi"><br>
-      Ship IMO: <input type="text" id="imo"><br>
-      <input type="button" value="Get ETA" onclick="getETA()">
-    </form>
+      <label for="portid">Port ID:</label><br>
+      <input type="text" id="portid" name="portid"><br>
+      <label for="unlocode">UN/LOCODE:</label><br>
+      <input type="text" id="unlocode" name="unlocode"><br>
+      <label for="shipid">Ship ID:</label><br>
+      <input type="text" id="shipid" name="shipid"><br>
+      <label for="mmsi">MMSI:</label><br>
+      <input type="text" id="mmsi" name="mmsi"><br>
+      <label for="imo">IMO:</label><br>
+      <input type="text" id="imo" name="imo"><br><br>
+      <button type="button" onclick="getETA()">Get ETA</button>
+    </form> 
+    
     <div id="eta"></div>
+    
     <script src="script.js"></script>
     </body>
 </html>
