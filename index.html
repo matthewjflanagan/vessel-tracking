@@ -8,18 +8,19 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <body>
     <h1>Vessel ETA to Port</h1>
     <form>
-      <label for="portid">Port ID:</label><br>
-      <input type="text" id="portid" name="portid"><br>
-      <label for="mmsi">MMSI:</label><br>
-      <input type="text" id="mmsi" name="mmsi"><br>
+      <label for="portid">Port ID:</label>
+      <input type="number" id="portid" />
+      <br />
+      <label for="mmsi">MMSI:</label>
+      <input type="number" id="mmsi" />
+      <br />
       <button type="button" onclick="getETA()">Get ETA</button>
-    </form> 
-
+    </form>
+    <br />
     <div id="eta"></div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
     </body>
 </body>
