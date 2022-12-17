@@ -1,5 +1,5 @@
 const API_KEY = "97d407d1e6b3783801fa995ab4d87df18746c1fd";
-const API_URL = "https://www.marinetraffic.com/en/ais/details/ports/portid:port_id/unlocode:unlocode/imo:imo/eta:yyyymmddhhmm";
+const API_URL = "https://www.marinetraffic.com/en/ais/details/ports/unlocode:unlocode/imo:imo/eta:yyyymmddhhmm";
 
 function getETA() {
   // Validate form fields
@@ -22,7 +22,7 @@ function getETA() {
         "Authorization": `Bearer ${API_KEY}`
       }
     })
-    .then(response => {
+    .then(async response => {
       // If the server returns a successful response, parse the response as JSON
       if (response.ok) {
         return response.json();
@@ -30,13 +30,14 @@ function getETA() {
       // If the server returns a "No 'Access-Control-Allow-Origin' header is present" error,
       // try making the request in "no-cors" mode to bypass the CORS error
       else if (response.status === 0) {
-        return fetch(url, {
+        const response_1 = await fetch(url, {
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${API_KEY}`
           },
           mode: "no-cors"
-        }).then(response => response.json());
+        });
+        return await response_1.json();
       }
       // If the server returns any other error, throw an error
       else {
